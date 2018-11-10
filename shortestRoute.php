@@ -9,7 +9,7 @@ const EARTH_RADIUS = 6371.008;
  *
  * @return array
  */
-function crowflies($points)
+function shortestRoute($points)
 {
     $pointsKeys       = array_keys($points);
     $shortestDistance = 0;
@@ -119,9 +119,9 @@ $points    = [
     [41.406648, 2.183632],
     [41.414227, 2.183725],
 ];
-$crowflies = crowflies($points);
+$shortestRoute = shortestRoute($points);
 
-echo implode('->', $crowflies['shortestRoute']);
+echo implode('->', $shortestRoute['shortestRoute']);
 echo PHP_EOL;
 echo implode(
     ' -> ',
@@ -129,11 +129,11 @@ echo implode(
         function ($entry) {
             return implode(',', $entry);
         },
-        $crowflies['shortestRouteCoordinates']
+        $shortestRoute['shortestRouteCoordinates']
     )
 );
 echo PHP_EOL;
-echo $crowflies['shortestDistance'];
+echo $shortestRoute['shortestDistance'];
 
 echo PHP_EOL;
 
