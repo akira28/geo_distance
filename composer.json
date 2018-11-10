@@ -1,0 +1,13 @@
+{
+    "name": "akira28/geo_distance",
+    "description": "Simple library to measure distance between to coordinates",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrea De Pirro",
+            "email": "andreadepirro@gmail.com"
+        }
+    ],
+    "require": {}
+}
