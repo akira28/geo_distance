@@ -38,6 +38,7 @@ function crowflies($points)
             return ((array_search($key1, $shortestRoute) > array_search($key2, $shortestRoute)) ? 1 : -1);
         }
     );
+
     return [
         'shortestRoute'            => $shortestRoute,
         'shortestRouteCoordinates' => $points,
@@ -120,10 +121,20 @@ $points    = [
 ];
 $crowflies = crowflies($points);
 
-print_r($crowflies);
-
 echo implode('->', $crowflies['shortestRoute']);
+echo PHP_EOL;
+echo implode(
+    ' -> ',
+    array_map(
+        function ($entry) {
+            return implode(',', $entry);
+        },
+        $crowflies['shortestRouteCoordinates']
+    )
+);
+echo PHP_EOL;
 echo $crowflies['shortestDistance'];
 
+echo PHP_EOL;
 
 
