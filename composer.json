@@ -9,5 +9,10 @@
             "email": "andreadepirro@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
 }

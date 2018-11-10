@@ -2,7 +2,7 @@
 
 namespace Akira28\GeoDistance;
 
-class Position
+class Point
 {
     private $latitude;
 

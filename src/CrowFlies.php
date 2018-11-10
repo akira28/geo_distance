@@ -2,23 +2,23 @@
 
 namespace Akira28\GeoDistance;
 
-class Distance
+class CrowFlies implements DistanceInterface
 {
     const EARTH_RADIUS = 6371.008;
 
     /**
-     * @param Position $positionA
-     * @param Position $positionB
+     * @param Point $pointA
+     * @param Point $pointB
      *
-     * @return float|int
+     * @return float
      */
-    public static function betweenPositions(Position $positionA, Position $positionB)
+    public function getDistance(Point $pointA, Point $pointB)
     {
-        $latitudeA = $positionA->getLatitude();
-        $latitudeB = $positionB->getLatitude();
+        $latitudeA = $pointA->getLatitude();
+        $latitudeB = $pointB->getLatitude();
 
-        $longitudeA = $positionA->getLongitude();
-        $longitudeB = $positionB->getLongitude();
+        $longitudeA = $pointA->getLongitude();
+        $longitudeB = $pointB->getLongitude();
 
         $dLat = deg2rad($latitudeB - $latitudeA);
         $dLon = deg2rad($longitudeB - $longitudeA);
