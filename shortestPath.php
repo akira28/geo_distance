@@ -121,3 +121,9 @@ $points    = [
 $crowflies = crowflies($points);
 
 print_r($crowflies);
+
+echo implode('->', $crowflies['shortestRoute']);
+echo $crowflies['shortestDistance'];
+
+
+
