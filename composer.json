@@ -9,7 +9,9 @@
             "email": "andreadepirro@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
     "autoload": {
         "classmap": [
             "src/"

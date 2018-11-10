@@ -7,10 +7,12 @@ class CrowFlies implements DistanceInterface
     const EARTH_RADIUS = 6371.008;
 
     /**
+     * Get distance in meters using the haversine Formula
+     *
      * @param Point $pointA
      * @param Point $pointB
      *
-     * @return float
+     * @return int
      */
     public function getDistance(Point $pointA, Point $pointB)
     {
@@ -29,6 +31,6 @@ class CrowFlies implements DistanceInterface
         $a       = $sindLat + $cosLat * $sindLon;
         $c       = 2 * asin(sqrt($a));
 
-        return self::EARTH_RADIUS * $c;
+        return round(self::EARTH_RADIUS * $c * 1000, 0);
     }
 }

@@ -9,8 +9,8 @@ class ShortestRoute
     public function __construct($strategyCode)
     {
         switch ($strategyCode) {
-            case "googledirection":
-                $this->strategy = new CrowFlies();
+            case "googledirections":
+                $this->strategy = new GoogleDirection();
                 break;
             case "crowflies":
             default:
@@ -24,7 +24,7 @@ class ShortestRoute
      *
      * @return array
      */
-    public function getShortestRoute($points)
+    public function getShortestRoute(array $points)
     {
 
         $pointsKeys       = array_keys($points);
