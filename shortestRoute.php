@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 const EARTH_RADIUS = 6371.008;
