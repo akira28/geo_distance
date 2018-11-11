@@ -2,10 +2,10 @@
 
 const EARTH_RADIUS = 6371.008;
 
-
 /**
  * @param array $points
- * Solve the travelling salesman problem with a naive brute force, to obtain the shortest path between multiple points
+ * Solve the travelling salesman problem with a naive brute force, to obtain the shortest path between multiple points,
+ * using the haversine formula to calculate distances
  *
  * @return array
  */
@@ -67,7 +67,7 @@ function getDistance($latitudeA, $latitudeB, $longitudeA, $longitudeB)
     $a       = $sindLat + $cosLat * $sindLon;
     $c       = 2 * asin(sqrt($a));
 
-    return EARTH_RADIUS * $c;
+    return round(EARTH_RADIUS * $c * 1000, 0);
 }
 
 /**
@@ -113,7 +113,7 @@ function getAllDistances($points)
     return $distances;
 }
 
-$points    = [
+$points        = [
     [41.408285, 2.216812],
     [41.392755, 2.185117],
     [41.406648, 2.183632],
