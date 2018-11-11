@@ -15,13 +15,13 @@ function shortestRoute($points)
     $shortestDistance = 0;
     $distances        = getAllDistances($points);
 
-    $allRoutes = getPermutations($pointsKeys);
-
+    $allRoutes   = getPermutations($pointsKeys);
+    $countPoints = count($points);
     foreach ($allRoutes as $key => $route) {
         $i     = 0;
         $total = 0;
         foreach ($route as $point) {
-            if ($i < count($points) - 1) {
+            if ($i < $countPoints - 1) {
                 $total += $distances["{$route[$i]}-{$route[$i+1]}"] ?? $distances["{$route[$i+1]}-{$route[$i]}"];
             }
             $i++;
@@ -43,6 +43,7 @@ function shortestRoute($points)
         'shortestRoute'            => $shortestRoute,
         'shortestRouteCoordinates' => $points,
         'shortestDistance'         => $shortestDistance,
+        'distances'                => $distances,
     ];
 
 }
@@ -136,5 +137,7 @@ echo PHP_EOL;
 echo $shortestRoute['shortestDistance'];
 
 echo PHP_EOL;
+
+print_r($shortestRoute['distances']);
 
 

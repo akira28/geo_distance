@@ -14,7 +14,7 @@ class CrowFlies implements DistanceInterface
      *
      * @return int
      */
-    public function getDistance(Point $pointA, Point $pointB)
+    private function getDistance(Point $pointA, Point $pointB)
     {
         $latitudeA = $pointA->getLatitude();
         $latitudeB = $pointB->getLatitude();
@@ -32,5 +32,26 @@ class CrowFlies implements DistanceInterface
         $c       = 2 * asin(sqrt($a));
 
         return round(self::EARTH_RADIUS * $c * 1000, 0);
+    }
+    
+    /**
+     * @param array $points
+     *
+     * @return array
+     */
+    public function getAllDistances(array $points)
+    {
+        $distances = [];
+        foreach ($points as $key1 => $point1) {
+            foreach ($points as $key2 => $point2) {
+                if ($key1 != $key2 && ! isset($distances["{$key2}-{$key1}"])) {
+                    $p1                           = new Point($point1[0], $point1[1]);
+                    $p2                           = new Point($point2[0], $point2[1]);
+                    $distances["{$key1}-{$key2}"] = $this->getDistance($p1, $p2);
+                }
+            }
+        }
+
+        return $distances;
     }
 }

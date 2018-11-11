@@ -19,6 +19,7 @@ function printRoute($route)
     echo PHP_EOL;
     echo $route['shortestDistance'];
     echo PHP_EOL;
+    print_r($route['distances']);
 }
 
 $points    = [

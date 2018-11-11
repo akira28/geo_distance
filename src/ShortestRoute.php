@@ -6,6 +6,11 @@ class ShortestRoute
 {
     private $strategy = null;
 
+    /**
+     * ShortestRoute constructor.
+     *
+     * @param string $strategyCode
+     */
     public function __construct($strategyCode)
     {
         switch ($strategyCode) {
@@ -29,15 +34,15 @@ class ShortestRoute
 
         $pointsKeys       = array_keys($points);
         $shortestDistance = 0;
-        $distances        = $this->getAllDistances($points);
+        $distances        = $this->strategy->getAllDistances($points);
 
-        $allRoutes = $this->getPermutations($pointsKeys);
-
+        $allRoutes   = $this->getPermutations($pointsKeys);
+        $countPoints = count($points);
         foreach ($allRoutes as $key => $route) {
             $i     = 0;
             $total = 0;
             foreach ($route as $point) {
-                if ($i < count($points) - 1) {
+                if ($i < $countPoints - 1) {
                     $total += $distances["{$route[$i]}-{$route[$i+1]}"] ?? $distances["{$route[$i+1]}-{$route[$i]}"];
                 }
                 $i++;
@@ -59,6 +64,7 @@ class ShortestRoute
             'shortestRoute'            => $shortestRoute,
             'shortestRouteCoordinates' => $points,
             'shortestDistance'         => $shortestDistance,
+            'distances'                => $distances,
         ];
 
     }
@@ -87,24 +93,4 @@ class ShortestRoute
         return $permutations;
     }
 
-    /**
-     * @param array $points
-     *
-     * @return array
-     */
-    private function getAllDistances($points)
-    {
-        $distances = [];
-        foreach ($points as $key1 => $point1) {
-            foreach ($points as $key2 => $point2) {
-                if ($key1 != $key2 && ! isset($distances["{$key2}-{$key1}"])) {
-                    $p1 = new Point($point1[0], $point1[1]);
-                    $p2 = new Point($point2[0], $point2[1]);
-                    $distances["{$key1}-{$key2}"] = $this->strategy->getDistance($p1, $p2);
-                }
-            }
-        }
-
-        return $distances;
-    }
 }
