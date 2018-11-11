@@ -33,7 +33,7 @@ class CrowFlies implements DistanceInterface
 
         return round(self::EARTH_RADIUS * $c * 1000, 0);
     }
-    
+
     /**
      * @param array $points
      *

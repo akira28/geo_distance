@@ -3,6 +3,12 @@ require __DIR__ . '/vendor/autoload.php';
 
 use \Akira28\GeoDistance\ShortestRoute;
 
+if(empty(getenv('GOOGLEKEY'))) {
+    echo 'You should provide a google key as an env variable: GOOGLEKEY=123456789 php run.php';
+    echo PHP_EOL;
+    exit;
+}
+
 function printRoute($route)
 {
     echo implode('->', $route['shortestRoute']);
@@ -18,6 +24,8 @@ function printRoute($route)
     );
     echo PHP_EOL;
     echo $route['shortestDistance'];
+    echo PHP_EOL;
+    echo 'Distances:';
     echo PHP_EOL;
     print_r($route['distances']);
 }
