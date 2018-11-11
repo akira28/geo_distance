@@ -137,7 +137,8 @@ echo PHP_EOL;
 echo $shortestRoute['shortestDistance'];
 
 echo PHP_EOL;
-
+echo 'Distances in meters:';
+echo PHP_EOL;
 print_r($shortestRoute['distances']);
-
+echo PHP_EOL;
 
